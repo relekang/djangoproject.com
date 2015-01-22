@@ -74,8 +74,8 @@ def document(request, lang, version, url):
     ]
 
     context = {
-        'doc': json.load(doc_path.open('rb')),
-        'env': json.load((docroot.joinpath('globalcontext.json')).open('rb')),
+        'doc': json.load(doc_path.open('r')),
+        'env': json.load((docroot.joinpath('globalcontext.json')).open('r')),
         'lang': lang,
         'version': version,
         'version_is_dev': version == 'dev',

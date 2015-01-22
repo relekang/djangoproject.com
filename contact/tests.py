@@ -3,7 +3,18 @@ from django.test import TestCase
 from django.test.utils import override_settings
 
 
-@override_settings(AKISMET_API_KEY='')  # Disable Akismet in tests
+def check_network_connection():
+    try:
+        requests.get('https://djangoproject.com')
+    except requests.exceptions.ConnectionError:
+        return False
+    return True
+
+
+has_network_connection = check_network_connection()
+
+
+@override_settings(AKISMET_TESTING=True)
 class ContactFormTests(TestCase):
     def test_foundation_contact(self):
         data = {
