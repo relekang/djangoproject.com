@@ -191,7 +191,7 @@ class Command(NoArgsCommand):
                             try:
                                 json_doc['body']  # Just to make sure it exists.
                                 title = unescape_entities(strip_tags(json_doc['title']))
-                            except KeyError, ex:
+                            except KeyError as ex:
                                 if verbosity >= 2:
                                     self.stdout.write("Skipping: %s (no %s)" % (path, ex.args[0]))
                                 continue
@@ -221,7 +221,7 @@ class Command(NoArgsCommand):
             repo, branch = url, 'master'
         if destdir.joinpath('.git').exists():
             try:
-                cwd = os.getcwdu()
+                cwd = os.getcwd()
                 os.chdir(str(destdir))
                 subprocess.call(['git', 'reset', '--hard', 'HEAD'])
                 subprocess.call(['git', 'pull'])

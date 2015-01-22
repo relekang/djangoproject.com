@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import json
 import operator
 
@@ -10,9 +8,9 @@ from django.utils.functional import cached_property
 
 from django_hosts.resolvers import reverse
 
-from unipath import Path
-
 from . import utils
+from pathlib import Path
+from functools import reduce
 
 
 class DocumentReleaseManager(models.Manager):
@@ -65,7 +63,7 @@ class DocumentRelease(models.Model):
     class Meta:
         unique_together = ('lang', 'version')
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s/%s" % (self.lang, self.version)
 
     def get_absolute_url(self):
@@ -145,7 +143,7 @@ class Document(models.Model):
     class Meta:
         unique_together = ('release', 'path')
 
-    def __unicode__(self):
+    def __str__(self):
         return "/".join([self.release.lang, self.release.version, self.path])
 
     def get_absolute_url(self):

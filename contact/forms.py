@@ -1,8 +1,7 @@
-from __future__ import unicode_literals
 import logging
 
-from django import forms
 import django
+from django import forms
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.utils.encoding import force_bytes
