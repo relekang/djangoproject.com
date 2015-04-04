@@ -67,7 +67,6 @@ INSTALLED_APPS = [
     'flat',
     'djangosecure',
     'registration',
-    'django_pygments',
     'django_hosts',
     'sorl.thumbnail',
 
@@ -83,7 +82,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'django_push.subscriber',
-
 ]
 
 LANGUAGE_CODE = 'en-us'
